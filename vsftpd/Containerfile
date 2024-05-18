@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y vsftpd
+
+COPY vsftpd.conf /etc/vsftpd.conf
+
+RUN useradd -m -d /home/ftpuser -s /bin/bash ftpuser && echo "ftpuser:password123" | chpasswd
+
+EXPOSE 20 21
+
+CMD ["/usr/sbin/vsftpd", "/etc/vsftpd.conf"]
+
+

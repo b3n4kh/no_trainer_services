@@ -1,0 +1,17 @@
+FROM postgres:latest
+
+# Set environment variables
+ENV POSTGRES_USER admin
+ENV POSTGRES_PASSWORD password123
+ENV POSTGRES_DB mock_database
+
+# Copy the initial SQL script to create tables and insert data
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Unsecure the PostgreSQL configuration (optional, for demonstration purposes)
+RUN echo "host all all 0.0.0.0/0 trust" >> /var/lib/postgresql/data/pg_hba.conf
+RUN echo "listen_addresses='*'" >> /var/lib/postgresql/data/postgresql.conf
+
+# Expose the PostgreSQL port
+EXPOSE 5432
+

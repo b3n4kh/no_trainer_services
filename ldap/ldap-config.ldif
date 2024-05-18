@@ -1,0 +1,24 @@
+dn: ou=users,dc=example,dc=org
+objectClass: organizationalUnit
+ou: users
+
+dn: cn=admin,dc=example,dc=org
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+userPassword: admin
+
+dn: uid=guest,ou=users,dc=example,dc=org
+objectClass: inetOrgPerson
+uid: guest
+sn: Guest
+cn: Guest User
+userPassword: guest
+
+dn: uid=weakuser,ou=users,dc=example,dc=org
+objectClass: inetOrgPerson
+uid: weakuser
+sn: Weak
+cn: Weak User
+userPassword: weakpassword
+
